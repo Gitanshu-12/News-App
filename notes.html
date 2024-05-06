@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <main>
+        <!-- Existing sections for highlighted news and regular news -->
+        <section id="highlighted-news" class="container flex">
+            <!-- Highlighted news will be dynamically inserted here -->
+        </section>
+
+        <section id="regular-news" class="container flex">
+            <div class="cards-container flex" id="cards-container">
+                <!-- Regular news cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- New section for notes -->
+        <section id="notes-section" class="container">
+            <h2>Notes</h2>
+            <textarea id="notes-textarea" rows="8" placeholder="Write your notes here..."></textarea>
+
+            <button id="save-note-btn">Save Note</button>
+            <h2>Saved Notes</h2>
+            <div id="notes-display"></div>
+        </section>
+    </main>
+    <script>
+        // Function to save a note
+        function saveNote() {
+            const notesTextarea = document.getElementById('notes-textarea');
+            const notesDisplay = document.getElementById('notes-display');
+
+            const noteText = notesTextarea.value.trim();
+
+            if (noteText !== '') {
+                const noteElement = document.createElement('div');
+                noteElement.classList.add('note');
+                noteElement.textContent = noteText;
+
+                notesDisplay.appendChild(noteElement);
+
+                // Clear textarea after saving note
+                notesTextarea.value = '';
+            }
+        }
+
+        // Event listener for the "Save Note" button
+        const saveNoteBtn = document.getElementById('save-note-btn');
+        saveNoteBtn.addEventListener('click', saveNote);
+
+    </script>
+
+
+</body>
+
+</html>
